@@ -5,7 +5,7 @@ create user musthave identified by 1234;
 grant connect, resource to musthave;
 
 --새 계정으로 오라클 접속
-conn musthave/1234;
+conn aidan/1234;
 
 --테이블 목록 조회
 select * from tab;
