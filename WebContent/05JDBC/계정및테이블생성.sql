@@ -51,7 +51,7 @@ create sequence seq_board_num
     nocache;
     
 --[예제 5-5] 더미 데이터 입력
-insert into member (id, pass, name) values ('adian', '1234', '분당폴리텍');
+insert into member (id, pass, name) values ('kopo', '1234', '분당폴리텍');
 insert into board  (num, title, content, id, postdate, visitcount) 
-	values (seq_board_num.nextval, '제목1입니다', '내용1입니다', 'aidan', sysdate, 0);
+	values (seq_board_num.nextval, '제목1입니다', '내용1입니다', 'kopo', sysdate, 0);
 commit;
