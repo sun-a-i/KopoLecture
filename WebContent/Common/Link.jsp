@@ -10,9 +10,7 @@
             <a href="../06Session/Logout.jsp">로그아웃</a>
         <% } %>
             &nbsp;&nbsp;&nbsp; 
-            <a href="List.jsp">게시판(페이징X)</a>
-            &nbsp;&nbsp;&nbsp; 
-            <a href="List.jsp">게시판(페이징O)</a>
+            <a href="List.jsp">게시판</a>
         </td>
     </tr>
 </table>
