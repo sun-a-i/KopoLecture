@@ -29,7 +29,17 @@
 	</div>
 
 	<div class="container">
-		<form:form modelAttribute="NewBook" class="form-horizontal">
+		<div class="float-right">
+			<form:form action="${pageContext.request.contextPath}/logout" 
+				method="POST">
+				<input type="submit" class="btn btn-sm btn-success" value="logout"> 
+			</form:form>
+		</div>
+	
+		<form:form modelAttribute="NewBook"
+					action="./add?${_csrf.parameterName}=${_csrf.token}" 
+					class="form-horizontal"
+					enctype="multipart/form-data">
 		<fieldset>
 		<legend>${addTitle}</legend>
 		<div class="form-group row">
@@ -101,6 +111,13 @@
 				<form:radiobutton path="condition" value="New"/>New
 				<form:radiobutton path="condition" value="Old"/>Old
 				<form:radiobutton path="condition" value="E-Book"/>E-Book
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label class="col-sm-2 control-label">도서이미지</label>
+			<div class="col-sm-7">
+				<form:input path="bookImage" type="file" class="form-control" />
 			</div>
 		</div>
 		

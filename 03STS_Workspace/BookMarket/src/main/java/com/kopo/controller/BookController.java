@@ -1,5 +1,6 @@
 package com.kopo.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kopo.domain.Book;
@@ -37,7 +39,7 @@ public class BookController {
 	}
 	
 	//@RequestMapping("/all")
-//	@GetMapping("/all") //-> mav �������� ����
+//	@GetMapping("/all") //-> mav 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
 //	public String requestAllBooks(Model model) {
 //		List<Book> list = bookService.getAllBookList();
 //		model.addAttribute("bookList", list);
@@ -56,7 +58,7 @@ public class BookController {
 	
 	/*
 	@GetMapping("/exam08/{category}/publisher/{publisher}")
-	public String requestMethod(@PathVariable String category, <- �Ѿ�� ��κ��� Ȱ��
+	public String requestMethod(@PathVariable String category, <- 占싼억옙占� 占쏙옙觀占쏙옙占� 활占쏙옙
 	*/
 	@GetMapping("/{category}")
 	public String requestBooksByCategory(@PathVariable("category") String bookCategory
@@ -67,7 +69,7 @@ public class BookController {
 	}
 	
 	
-	//EX) http://localhost:8082/controller/books/filter/bookFilter;publisher=이지스퍼블리싱;category=IT전문서
+	//EX) http://localhost:8082/controller/books/filter/bookFilter;publisher=�씠吏��뒪�띁釉붾━�떛;category=IT�쟾臾몄꽌
 	@GetMapping("/filter/{bookFilter}")
 	public String requestBooksByFilter(
 			@MatrixVariable(pathVar="bookFilter") Map<String, List<String>> bookFilter,
@@ -88,7 +90,7 @@ public class BookController {
 	//public String requestAddBookForm(Book book) {
 	public String requestAddBookForm(@ModelAttribute("NewBook") Book book) {
 		/*
-		 * ※네비게이션바, jumbotron, footer 적용한 jsp 페이지 만들기
+		 * �삳꽕鍮꾧쾶�씠�뀡諛�, jumbotron, footer �쟻�슜�븳 jsp �럹�씠吏� 留뚮뱾湲�
 		 * bookId
 		 * name
 		 * unitPrice
@@ -106,34 +108,35 @@ public class BookController {
 	
 	@PostMapping("/add")
 	public String submitAddNewBook(@ModelAttribute("NewBook") Book book) {
-		bookService.setNewBook(book);
-		return "redirect:/books"; //뷰 리다이렉션 - 웹 요청에 따라서 뷰페이지 이동
+		MultipartFile bookImage = book.getBookImage();
 		
-		/*
-		 * 1. redirect
-		 * - 요청 URL로 응답 뷰를 이동
-		 * - 이때 이동할 URL 에 다시 요청을 시도 -> 최초 요청은 무효
-		 * : 폼에서 데이터를 입력받는 시스템, 세션 DB 에 변화가 생기는 요청
-		 * 
-		 * 2. forward
-		 * - 최초 요청 URL을 유지 -> 응답 뷰 페이지를 표현
-		 * - 현재 페이지에서 이동할 URL로 정보가 그대로 전달 -> 최초 요청 정보가 유효
-		 * - 실제 웹페이지가 변경됬지만 사용자는 알수 없음
-		 * : 시스템 변화가 없는 단순 조회, 등등 사용
-		 * */
+		String saveName = bookImage.getOriginalFilename();
+		File saveFile = new File("C:\\upload", saveName);
+		
+		if(bookImage != null && !bookImage.isEmpty()) {
+			try {
+				bookImage.transferTo(saveFile);
+			}catch (Exception e) {
+				throw new RuntimeException("이미지 업로드에 실패하였습니다.", e);
+			}
+		}
+		
+		bookService.setNewBook(book);
+		return "redirect:/books"; //酉� 由щ떎�씠�젆�뀡 - �쎒 �슂泥��뿉 �뵲�씪�꽌 酉고럹�씠吏� �씠�룞		
 	}
 	
 	@ModelAttribute
 	public void addAttribute(Model model) {
-		model.addAttribute("addTitle", "신규 도서 등록");
+		model.addAttribute("addTitle", "�떊洹� �룄�꽌 �벑濡�");
 	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setAllowedFields("bookId", "name","unitPrice","author"
 				,"description", "publisher", "category", "unitsInStock"
-				,"releaseDate","condition");
+				,"releaseDate","condition", "bookImage");
 	}
+	
 	
 	
 	

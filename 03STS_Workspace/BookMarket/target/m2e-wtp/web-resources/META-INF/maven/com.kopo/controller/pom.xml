@@ -12,8 +12,50 @@
 		<org.springframework-version>5.2.8.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.6</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
+		<security.version>5.6.3</security.version>
+		<commons-fileupload-version>1.4</commons-fileupload-version>
+		<commons-io-version>2.11.0</commons-io-version>
 	</properties>
+	
 	<dependencies>
+		<!-- file upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io-version}</version>
+		</dependency>
+	
+		<!-- Security -->
+		<!-- 
+		spring-security-web.jar : 필터, 보안 인프라 관련 코드 모든것
+		스프링 시큐리티 웹 인증 서비스 및 URL 기반 액세스를 제어하는 경우 필요
+		
+		spring-security-config.jar : 스프링 시큐리티 XML 관장 
+		 -->
+        <dependency>
+        	<groupId>org.springframework.security</groupId>
+        	<artifactId>spring-security-web</artifactId>
+        	<version>${security.version}</version>
+    	</dependency>
+    	<dependency>
+        	<groupId>org.springframework.security</groupId>
+        	<artifactId>spring-security-config</artifactId>
+        	<version>${security.version}</version>
+    	</dependency>
+		     	
+     	<dependency>
+    		<groupId>org.springframework.security</groupId>
+    		<artifactId>spring-security-taglibs</artifactId>
+    		<version>${security.version}</version>
+		</dependency>
+		
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

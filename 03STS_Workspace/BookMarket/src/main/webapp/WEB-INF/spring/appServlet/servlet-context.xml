@@ -23,14 +23,10 @@
 	
 	<context:component-scan base-package="com.kopo.*" />
 	
-	<!-- 
-	<beans:bean class="com.kopo.controller.HomeController"/>
-
-	<beans:bean id="bookRepositoryImpl" 
-				class="com.kopo.repository.BookRepositoryImpl"/>
-	 -->
-	
-	
+	<!--  파일 업로드 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10240000"/>
+	</beans:bean>
 	
 	
 </beans:beans>

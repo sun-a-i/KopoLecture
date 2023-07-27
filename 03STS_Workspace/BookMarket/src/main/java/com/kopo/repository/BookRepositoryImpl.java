@@ -15,27 +15,27 @@ public class BookRepositoryImpl implements BookRepository {
 	private List<Book> listOfBooks = new ArrayList<Book>();
 	
 	public BookRepositoryImpl() {
-		Book book1 = new Book("ISBN1234", "재미있는 책", 17100);
-		book1.setAuthor("블랑카");
-		book1.setDescription("진짜 재미있는 책, 진짜 재미있는 책, 진짜 재미있는 책, 진짜 재미있는 책, ");
-		book1.setPublisher("이지스퍼블리싱");
-		book1.setCategory("IT전문서");
+		Book book1 = new Book("book1", "�옱誘몄엳�뒗 梨�", 17100);
+		book1.setAuthor("釉붾옉移�");
+		book1.setDescription("吏꾩쭨 �옱誘몄엳�뒗 梨�, 吏꾩쭨 �옱誘몄엳�뒗 梨�, 吏꾩쭨 �옱誘몄엳�뒗 梨�, 吏꾩쭨 �옱誘몄엳�뒗 梨�, ");
+		book1.setPublisher("�씠吏��뒪�띁釉붾━�떛");
+		book1.setCategory("IT�쟾臾몄꽌");
 		book1.setUnitsInStock(1000);
 		book1.setReleaseDate("2023/07/15");
 		
-		Book book2 = new Book("ISBN1235", "재미없는 책", 16500);
-		book2.setAuthor("최준식");
-		book2.setDescription("진짜 재미없는 책, 진짜 재미없는 책, 진짜 재미없는 책, 진짜 재미없는 책, 진짜 재미없는 책, ");
-		book2.setPublisher("이지스퍼블리싱2");
-		book2.setCategory("IT전문서2");
+		Book book2 = new Book("book2", "�옱誘몄뾾�뒗 梨�", 16500);
+		book2.setAuthor("理쒖��떇");
+		book2.setDescription("吏꾩쭨 �옱誘몄뾾�뒗 梨�, 吏꾩쭨 �옱誘몄뾾�뒗 梨�, 吏꾩쭨 �옱誘몄뾾�뒗 梨�, 吏꾩쭨 �옱誘몄뾾�뒗 梨�, 吏꾩쭨 �옱誘몄뾾�뒗 梨�, ");
+		book2.setPublisher("�씠吏��뒪�띁釉붾━�떛2");
+		book2.setCategory("IT�쟾臾몄꽌2");
 		book2.setUnitsInStock(600);
 		book2.setReleaseDate("2023/06/14");
 		
-		Book book3 = new Book("ISBN12396", "조용필 조용히햇", 28000);
-		book3.setAuthor("아이유");
-		book3.setDescription("어쩌다 마주친 그대 눈빛에 내 가슴은 ..........");
-		book3.setPublisher("이지스퍼블리싱2");
-		book3.setCategory("IT전문서2");
+		Book book3 = new Book("book3", "議곗슜�븘 議곗슜�엳�뻼", 28000);
+		book3.setAuthor("�븘�씠�쑀");
+		book3.setDescription("�뼱姨뚮떎 留덉＜移� 洹몃� �늿鍮쏆뿉 �궡 媛��뒾�� ..........");
+		book3.setPublisher("�씠吏��뒪�띁釉붾━�떛2");
+		book3.setCategory("IT�쟾臾몄꽌2");
 		book3.setUnitsInStock(511);
 		book3.setReleaseDate("2023/05/31");
 		
@@ -105,7 +105,7 @@ public class BookRepositoryImpl implements BookRepository {
 			}
 		}
 		if(bookInfo == null)
-			throw new IllegalArgumentException("도서의 ID를 찾을 수가 없습니다 : " + bookId);
+			throw new IllegalArgumentException("�룄�꽌�쓽 ID瑜� 李얠쓣 �닔媛� �뾾�뒿�땲�떎 : " + bookId);
 		
 		return bookInfo;
 	}
