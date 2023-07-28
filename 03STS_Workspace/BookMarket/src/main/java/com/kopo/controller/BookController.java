@@ -89,20 +89,6 @@ public class BookController {
 	@GetMapping("/add")
 	//public String requestAddBookForm(Book book) {
 	public String requestAddBookForm(@ModelAttribute("NewBook") Book book) {
-		/*
-		 * �삳꽕鍮꾧쾶�씠�뀡諛�, jumbotron, footer �쟻�슜�븳 jsp �럹�씠吏� 留뚮뱾湲�
-		 * bookId
-		 * name
-		 * unitPrice
-		 * author
-		 * description <- textarea
-		 * publisher
-		 * category
-		 * unitInStock
-		 * releaseDate
-		 * condition <- radioButton
-		 * 
-		 * */
 		return "addBook";
 	}
 	
@@ -116,6 +102,7 @@ public class BookController {
 		if(bookImage != null && !bookImage.isEmpty()) {
 			try {
 				bookImage.transferTo(saveFile);
+				book.setFileName(saveName);
 			}catch (Exception e) {
 				throw new RuntimeException("이미지 업로드에 실패하였습니다.", e);
 			}

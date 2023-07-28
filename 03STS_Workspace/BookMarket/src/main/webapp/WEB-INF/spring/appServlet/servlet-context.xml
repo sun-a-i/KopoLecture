@@ -27,6 +27,20 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10240000"/>
 	</beans:bean>
+	<!--  파일 업로드 설정 끝 -->
 	
+	<!-- 오라클 DB 설정 -->
+	<beans:bean id="dataSource" 
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		
+		<beans:property name="username" value="kopo" />
+		<beans:property name="password" value="1234" />
+	</beans:bean>
 	
+	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+	<!-- 오라클 DB 설정 끝 -->
 </beans:beans>

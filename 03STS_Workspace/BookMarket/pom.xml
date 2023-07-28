@@ -18,6 +18,22 @@
 	</properties>
 	
 	<dependencies>
+		<!-- oracle driver -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>oracle-jdbc</artifactId>
+			<version>11.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework-version}</version>
+    	</dependency>
+
+		
 		<!-- file upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

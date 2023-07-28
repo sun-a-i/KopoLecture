@@ -1,0 +1,45 @@
+====================================================================
+OracleDB를 사용하는 방법
+- WEB-INF > lib 폴더 확인
+- pom.xml 확인
+- servlet-context.xml 확인
+- com.kopo.repository 패키지 추가된 java 파일 확인 : DTO 역할
+- getAllBookList() 메서드 내 쿼리문 적용 방법 확인 : 다른 기능들도 동일하게 쿼리로 작성하면 됩니다.
+- JDBC VS JDK version 확인
+링크:
+https://www.oracle.com/database/technologies/faq-jdbc.html
+└What are the Oracle JDBC releases Vs JDK versions? <- 해당 부분에서 확인
+
+jsp 실습할 때 데이터베이스는 oracleDB 11g 버전을 설치하였습니다.
+spring에서는 버전 호환때문에 jdk15로 진행하였는데, 둘의 호환은 맞지 않습니다.
+위 링크 참조하셔서 해당 버전의 데이터베이스를 설치 후 진행해야 합니다.
+
+버전을 맞추어 설치하셨더라도 db에 기본 데이터가 있어야 불러올 수 있을 것 입니다.
+하단의 쿼리문을 참고하여 미리 기본 데이터는 insert 후 시도해보시면 되겠습니다.
+
+현재 예제에서는 mybatis는 활용하지 않았습니다.
+dbcp(커넥션 풀)와 jdni(네이밍서비스)의 개념은 알고있죠? 연동방법이 차이가 좀 있으나 위 적용 방식에서 크게 다르지 않습니다.
+화이팅입니다 :) 
+====================================================================
+
+
+CREATE TABLE book(
+	b_bookId VARCHAR2(10) NOT NULL,
+	b_name VARCHAR2(30),
+	b_unitPrice  INTEGER,
+	b_author VARCHAR2(50),
+	b_description VARCHAR2(300),
+	b_publisher VARCHAR2(20),
+	b_category VARCHAR2(20),
+	b_unitsInStock LONG,	
+	b_releaseDate VARCHAR2(20),
+	b_condition VARCHAR2(20),
+	b_fileName  VARCHAR2(20),
+	PRIMARY KEY (b_bookId)
+);
+
+INSERT INTO book VALUES('book1', '첫번째책', 15000,'홍길동', '첫번째책 설명', '제이펍', 'IT전문서', 1000,'2023/05/29','','book1.jpg');
+INSERT INTO book VALUES('book2', '두번째책', 21000,'고길동', '두번째책 설명', '폴리텍', 'IT전문서', 2000,'2023/01/12','','book2.jpg'); 
+INSERT INTO book VALUES('book3', '세번째책', 31000,'박길동', '세번째책 설명', '한빛미디어', 'IT전문서', 1200,'2023/07/07','','book3.jpg');
+
+commit;

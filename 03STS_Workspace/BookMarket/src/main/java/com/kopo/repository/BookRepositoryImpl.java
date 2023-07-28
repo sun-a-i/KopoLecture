@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kopo.domain.Book;
@@ -13,6 +17,12 @@ import com.kopo.domain.Book;
 @Repository
 public class BookRepositoryImpl implements BookRepository {
 	private List<Book> listOfBooks = new ArrayList<Book>();
+	private JdbcTemplate template;
+	
+	@Autowired
+	public void setJdbctemplate(DataSource dataSource) {
+		this.template = new JdbcTemplate(dataSource);
+	}
 	
 	public BookRepositoryImpl() {
 		Book book1 = new Book("book1", "�옱誘몄엳�뒗 梨�", 17100);
@@ -47,6 +57,8 @@ public class BookRepositoryImpl implements BookRepository {
 	@Override
 	public List<Book> getAllBookList() {
 		// TODO Auto-generated method stub
+		String SQL = "SELECT * FROM book";
+		List<Book> listOfBooks = template.query(SQL, new BookRowMapper());
 		return listOfBooks;
 	}
 

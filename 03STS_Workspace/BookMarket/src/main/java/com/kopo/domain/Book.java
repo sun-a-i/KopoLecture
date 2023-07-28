@@ -3,18 +3,27 @@ package com.kopo.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Book {
-	private String bookId;		//µµ¼­ID
-	private String name;		//µµ¼­¸í
-	private int unitPrice;		//°¡°Ý
-	private String author;		//ÀúÀÚ
-	private String description;	//¼³¸í
-	private String publisher;	//ÃâÆÇ»ç
-	private String category;	//ºÐ·ù
-	private long unitsInStock;//Àç°í¼ö
-	private String releaseDate;	//ÃâÆÇÀÏ
-	private String condition;	//½Å±Ô or Áß°í or ÀüÀÚÃ¥
-	private MultipartFile bookImage; //ÀÌ¹ÌÁö
+	private String bookId;		//ï¿½ï¿½ï¿½ï¿½ID
+	private String name;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int unitPrice;		//ï¿½ï¿½ï¿½ï¿½
+	private String author;		//ï¿½ï¿½ï¿½ï¿½
+	private String description;	//ï¿½ï¿½ï¿½ï¿½
+	private String publisher;	//ï¿½ï¿½ï¿½Ç»ï¿½
+	private String category;	//ï¿½Ð·ï¿½
+	private long unitsInStock;//ï¿½ï¿½ï¿½ï¿½
+	private String releaseDate;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String condition;	//ï¿½Å±ï¿½ or ï¿½ß°ï¿½ or ï¿½ï¿½ï¿½ï¿½Ã¥
+	private MultipartFile bookImage; //ï¿½Ì¹ï¿½ï¿½ï¿½
+	private String fileName;
 		
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public MultipartFile getBookImage() {
 		return bookImage;
 	}
@@ -108,7 +117,7 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-	//ÀÏ¹Ý»ý¼ºÀÚ
+	//ï¿½Ï¹Ý»ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Book(String bookId, String name, int unitPrice) {
 		super();
 		this.bookId = bookId;
